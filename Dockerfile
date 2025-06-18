@@ -1,8 +1,7 @@
 FROM rockylinux/rockylinux:9.4-minimal
 
 # 必要最低限のパッケージをインストール
-RUN microdnf install -y epel-release && \
-    microdnf install -y \
+RUN microdnf install -y \
         python39 python3-pip python3-libs \
         nano vim-minimal logrotate wget curl procps-ng \
         postfix cronie \

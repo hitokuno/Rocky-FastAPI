@@ -4,4 +4,4 @@ pyjwt
 jinja2
 python-dotenv
 oracledb
-beautifulsoup4
+beautifu

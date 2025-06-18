@@ -11,4 +11,4 @@ fi
 /usr/sbin/crond
 
 # FastAPI起動
-exec su appuser -c "uvicorn main:app --host 0.0.0.0 --port 8000"
+exec su appuser -c "uvicorn main:app --host 0.0.0.
