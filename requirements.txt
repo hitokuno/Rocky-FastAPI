@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pyjwt
+jinja2
+python-dotenv
+oracledb
+beautifulsoup4
