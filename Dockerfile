@@ -13,12 +13,14 @@ RUN microdnf install -y \
 RUN useradd -m -u 1000 appuser
 
 # Oracle Instant Client Basic インストール（URLは最新を要確認）
-ENV ORACLE_IC_VERSION=21_13
-RUN wget -q https://download.oracle.com/otn_software/linux/instantclient/2113000/instantclient-basic-linux.x64-21.13.0.0.0dbru.zip -O /tmp/ic.zip && \
+RUN wget -q https://download.oracle.com/otn_software/linux/instantclient/2380000/instantclient-basiclite-linux.x64-23.8.0.25.04.zip -O /tmp/ic.zip && \
     mkdir -p /opt/oracle && \
     unzip /tmp/ic.zip -d /opt/oracle && \
-    ln -s /opt/oracle/instantclient_21_13 /opt/oracle/instantclient && \
+    ln -s /opt/oracle/instantclient_23_8 /opt/oracle/instantclient && \
     echo /opt/oracle/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf && \
+    # soファイルのデバッグ情報を除去
+    find /opt/oracle/instantclient -name "*.so*" -exec strip --strip-unneeded {} \; && \
+    echo "/opt/oracle/instantclient" > /etc/ld.so.conf.d/oracle-instantclient.conf && \
     ldconfig && \
     rm -f /tmp/ic.zip
 
